@@ -3,14 +3,14 @@ public enum StringOperator{
 	UPPERCASE{public String apply(String str){return str.toUpperCase();}}, 
 	LOWERCASE{public String apply(String str){return str.toLowerCase();}},
 	FIRSTUPPER{public String apply(String str){
-		String[] words = str.split(" ");
-							StringBuilder result = new StringBuilder(); // string builder to store result 
-							for(String word : words){
-								StringBuilder modWord = new StringBuilder(word);
-								modWord.setCharAt(0,Character.toUpperCase(word.charAt(0))); // convert the first char to UpperCase
-								result.append(" "+modWord); // add modified word to string builder 
-							}
-							return result.toString();
+		String[] words = str.split(" ");					
+		StringBuilder result = new StringBuilder(); // string builder to store result 
+		for(String word : words){
+			StringBuilder modWord = new StringBuilder(word);
+			modWord.setCharAt(0,Character.toUpperCase(word.charAt(0))); // convert the first char to UpperCase
+			result.append(" "+modWord); // add modified word to string builder 
+		}
+		return result.toString();
 	}};
 
 	// enum fields: 
@@ -24,5 +24,14 @@ public enum StringOperator{
 	// constructor 
 	StringOperator(){
 
+	}
+
+	public static void main(String[] args ){
+		String str = "Enums make things awesome";
+		System.out.println(str);
+		for(StringOperator op : StringOperator.values()){ // apply all variations 
+			System.out.println(op + " applied:"); 
+			System.out.println(op.apply(str)); 
+		}
 	}
 }
